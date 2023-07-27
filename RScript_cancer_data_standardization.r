@@ -43,9 +43,10 @@ Heatmap(temp2,col = colorRamp2(c(-2,0,2),c("orange","white","purple")))
 
 data=temp2
 head(data)
-
+data=data[,order(colnames(data))]
+data
 metadata = read.csv("C:/Users/HP/OneDrive/Documents/meta.csv")
 head(df)
 #Set annotation
 annotations=HeatmapAnnotation(cell_line=metadata$cell_line,age=metadata$Age,gender=metadata$Gender)
-Heatmap(temp2,col = colorRamp2(c(-2,0,2),c("orange","white","purple")),top_annotation=annotations,width = 80, height = 45)
+Heatmap(data,col = colorRamp2(c(-2,0,2),c("orange","white","purple")),top_annotation=annotations, cluster_rows = FALSE,cluster_columns = FALSE,)
